@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="search">Search</string>
+    <string name="check_internet_connection">Check your Internet Connection</string>
+    <string name="retry">Click To Retry</string>
+</resources>
