@@ -1,7 +1,5 @@
 package com.imran.movieapp.viewModel;
 
-import android.arch.lifecycle.MutableLiveData;
-
 import com.imran.movieapp.BuildConfig;
 import com.imran.movieapp.db.MovieDatabase;
 import com.imran.movieapp.model.Movie;
@@ -22,14 +20,9 @@ public class MovieDetailViewModel extends BaseViewModel<BaseNavigator> {
     }
 
     private final StateLiveData<Movie> listMutableLiveData = new StateLiveData<>();
-    private final MutableLiveData<Boolean> isAddedToFavourite = new MutableLiveData<>();
 
     public StateLiveData<Movie> getListMutableLiveData() {
         return listMutableLiveData;
-    }
-
-    public MutableLiveData<Boolean> getIsAddedToFavourite() {
-        return isAddedToFavourite;
     }
 
     public void loadMovieDetail(int movie_id) {
@@ -51,22 +44,5 @@ public class MovieDetailViewModel extends BaseViewModel<BaseNavigator> {
                         listMutableLiveData.postError(t);
                     }
                 });
-    }
-
-    public void handleFavourites(final Movie movie) {
-        getExecutor().execute(new Runnable() {
-            @Override
-            public void run() {
-                if (getMovieDatabase().movieDAO().loadMovie(movie.getMovieTitle()) == null) {
-                    movie.isFavourite(true);
-                    getMovieDatabase().movieDAO().saveMovieAsFavourite(movie);
-                    isAddedToFavourite.postValue(true);
-                } else {
-                    movie.isFavourite(false);
-                    getMovieDatabase().movieDAO().removeMovieFromFavourites(movie);
-                    isAddedToFavourite.postValue(false);
-                }
-            }
-        });
     }
 }

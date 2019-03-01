@@ -26,7 +26,6 @@ public class TopRatedMovieViewModel extends BaseViewModel<BaseNavigator> {
 
     private final MutableLiveData<Boolean> isPaginationLoadingLiveData = new MutableLiveData<>();
     private final StateLiveData<List<Movie>> listMutableLiveData = new StateLiveData<>();
-    private final MutableLiveData<Boolean> isAddedToFavourite = new MutableLiveData<>();
 
     public MutableLiveData<Boolean> getIsPaginationLoadingLiveData() {
         return isPaginationLoadingLiveData;
@@ -34,10 +33,6 @@ public class TopRatedMovieViewModel extends BaseViewModel<BaseNavigator> {
 
     public StateLiveData<List<Movie>> getListMutableLiveData() {
         return listMutableLiveData;
-    }
-
-    public MutableLiveData<Boolean> getIsAddedToFavourite() {
-        return isAddedToFavourite;
     }
 
     public void loadTopRatedMovie(final int mPageNumber) {
@@ -64,21 +59,6 @@ public class TopRatedMovieViewModel extends BaseViewModel<BaseNavigator> {
                         removeLoadingLiveData(mPageNumber, t);
                     }
                 });
-    }
-
-    public void handleFavourites(final Movie movie) {
-        getExecutor().execute(new Runnable() {
-            @Override
-            public void run() {
-                if (getMovieDatabase().movieDAO().loadMovie(movie.getMovieTitle()) == null) {
-                    getMovieDatabase().movieDAO().saveMovieAsFavourite(movie);
-                    isAddedToFavourite.postValue(true);
-                } else {
-                    getMovieDatabase().movieDAO().removeMovieFromFavourites(movie);
-                    isAddedToFavourite.postValue(false);
-                }
-            }
-        });
     }
 
     private void setLoadingLiveData(int mPageNumber) {
