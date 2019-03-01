@@ -60,8 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
             android:visibility="visible"
             app:cardCornerRadius="2dp"
             app:cardElevation="2dp">
@@ -128,27 +128,8 @@
 
     </android.support.v4.widget.NestedScrollView>
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone" />
+    <include layout="@layout/progressbar_layout" />
 
-    <TextView
-        android:id="@+id/retry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="25dp"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        android:padding="12dp"
-        android:text="@string/retry"
-        android:textColor="@color/white"
-        android:textSize="18dp"
-        android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>
 

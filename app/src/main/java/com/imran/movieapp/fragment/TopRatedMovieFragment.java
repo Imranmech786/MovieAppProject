@@ -68,6 +68,7 @@ public class TopRatedMovieFragment extends DaggerFragment implements BaseNavigat
         mRecyclerview.setLayoutManager(gridLayoutManager);
         rootView = view.findViewById(R.id.root_view);
         retry = view.findViewById(R.id.retry);
+        retry.setText(mContext.getString(R.string.retry));
         retry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

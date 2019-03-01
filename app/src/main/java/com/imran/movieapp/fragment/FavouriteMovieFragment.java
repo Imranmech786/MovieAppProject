@@ -48,7 +48,8 @@ public class FavouriteMovieFragment extends DaggerFragment implements BaseNaviga
         final RecyclerView recyclerview = view.findViewById(R.id.recyclerview);
         rootView = view.findViewById(R.id.root_view);
         recyclerview.setLayoutManager(new GridLayoutManager(mContext, 2));
-        final TextView noFavs = view.findViewById(R.id.no_favs);
+        final TextView noFavs = view.findViewById(R.id.retry);
+        noFavs.setText(mContext.getString(R.string.no_favourites));
         favouriteMovieViewModel.getListMutableLiveData().observe(this, new Observer<List<Movie>>() {
             @Override
             public void onChanged(@Nullable List<Movie> movieList) {
