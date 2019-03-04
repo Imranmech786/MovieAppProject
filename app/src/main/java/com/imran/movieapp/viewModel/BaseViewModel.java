@@ -11,10 +11,6 @@ import java.util.concurrent.Executor;
 
 import io.reactivex.subjects.PublishSubject;
 
-/**
- * Created by kautilya on 01/02/18.
- */
-
 public abstract class BaseViewModel<N> extends ViewModel {
 
     private N mNavigator;
